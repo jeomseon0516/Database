@@ -178,17 +178,20 @@ JOIN `bank_customer` AS c ON b.a_c_no = c.c_no
 WHERE `t_dist` = 1
 ORDER BY `t_amount` DESC;
 #실습 2-30
-SELECT
-	a.t_no,
-    b.a_no,
-    c.c_no,
-    a.t_dist,
-    b.a_item_name,
-    c.c_name, COUNT(a.t_no) AS `거래건수`
+SELECT 
+	ANY_VALUE(`t_no`) AS `번호`,
+	ANY_VALUE(`a_no`) AS `계좌번호`,
+	`c_no`,
+	ANY_VALUE(`t_dist`) AS `구분`,
+	ANY_VALUE(`a_item_name`) AS `계좌이름`,
+	ANY_VALUE(`c_name`) AS `고객명`,
+    COUNT(`t_no`) AS `거래건수`
 FROM `bank_transaction` AS a
 JOIN `bank_account` AS b ON a.t_a_no = b.a_no
 JOIN `bank_customer` AS c ON b.a_c_no = c.c_no
-WHERE a.t_dist IN(1, 2) AND c.c_dist = 1
-GROUP BY c.c_no
-ORDER BY a.t_dist, `거래건수` DESC;
+WHERE `t_dist` IN (1, 2) AND `c_dist` = 1
+GROUP BY `c_no`
+ORDER BY `구분`, `거래건수` DESC;
+
+
  
