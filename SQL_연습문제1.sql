@@ -35,6 +35,7 @@ CREATE TABLE `Order`(
     orderDate DATETIME
 );
 
+SELECT * FROM Customer;
 # 실습 1-3.
 INSERT INTO Customer VALUES('c101', '김유신', '010-1234-1001', '김해시 봉황동', '2022-01-01');
 INSERT INTO Customer VALUES('c102', '김춘추', '010-1234-1002', '경주시 보문동', '2022-01-02');
