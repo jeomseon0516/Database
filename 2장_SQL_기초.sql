@@ -3,7 +3,7 @@
 # 내용 : 2장 SQL 기초
 
 # 테이블 생성
-CREATE TABLE User1 (user1
+CREATE TABLE User1(
 	userid VARCHAR(20),
 	name   VARCHAR(20),
 	hp     CHAR(13),
